@@ -1,0 +1,21 @@
+ GET name
+"Madhu"
+ SET count 1
+OK
+ INCR count
+(integer) 2
+ SET temp 100
+OK
+ EXPIRE temp 10
+(integer) 1
+ ZADD requests 1 "req1"
+(integer) 1
+ ZADD requests 2 "req2"
+(integer) 1
+ ZRANGE requests 0 -1
+ "req1"
+ "req2"
+ exit
+
+docker stop redis-server
+redis-server
