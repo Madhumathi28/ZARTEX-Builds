@@ -1,0 +1,35 @@
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/redis/go-redis/v9"
+)
+
+var ctx = context.Background()
+
+func main() {
+	// Create Redis client
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379", // Redis server address
+		Password: "",               // no password by default
+		DB:       0,                // default DB
+	})
+
+	// Set a key
+	err := rdb.Set(ctx, "name", "Madhumathi", 0).Err()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Key set successfully!")
+
+	// Get the key
+	val, err := rdb.Get(ctx, "name").Result()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Value:", val)
+}
