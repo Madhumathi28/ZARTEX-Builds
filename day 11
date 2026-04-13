@@ -1,0 +1,14 @@
+# step 1 — go to project root
+cd "C:\Users\kmadh\Desktop\ZARTEX-Builds\Rate limiter"
+
+# step 2 — check status
+git status
+
+# step 3 — stage all files
+git add .
+
+# step 4 — commit
+git commit -m "feat: implement in-memory token bucket with unit tests"
+
+# step 5 — push
+git push origin main
